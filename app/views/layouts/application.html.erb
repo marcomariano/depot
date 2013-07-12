@@ -10,6 +10,10 @@
 <div id="banner">
 <%= image_tag("logo.png") %>
 <%= Date.current.to_formatted_s(:long_ordinal) %>
+<!--#Display store session counter only if is bigger than 5 -->
+<% unless @session_count.nil? ||  @session_count <= 5%>
+<p><%= pluralize(@session_count, 'time') %></p>
+<% end %>
 <h1><%= @page_title || "Pragmatic Bookshelf" %></h1>
 
 
@@ -17,7 +21,7 @@
 <div id="columns">
 	<div id="side">
 		<ul>
-			<li><a href="http://www....">Home</a></li>
+			<li> <%= link_to( "Home", controller: "store", action: "index") %></li>
 			<li><a href="http://www..../faq">Questions</a></li>
 			<li><a href="http://www..../news">News</a></li>
 			<li><a href="http://www..../contact">Contact</a></li>
